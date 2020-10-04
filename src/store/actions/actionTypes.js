@@ -1,0 +1,13 @@
+export const GET_USER_LIST = "GET_USER_LIST";
+export const GET_USER = "GET_USER";
+export const UPDATE_LOGIN_STATUS = "UPDATE_LOGIN_STATUS";
+export const GET_ARTICLE_LIST = "GET_ARTICLE_LIST";
+export const CREATE_ARTICLE = "CREATE_ARTICLE";
+export const GET_ARTICLE = "GET_ARTICLE";
+export const EDIT_ARTICLE = "EDIT_ARTICLE";
+export const DELETE_ARTICLE = "DELETE_ARTICLE";
+export const GET_COMMENT_LIST = "GET_COMMENT_LIST";
+export const CREATE_COMMENT = "CREATE_COMMENT";
+export const GET_COMMENT = "GET_COMMENT";
+export const EDIT_COMMENT = "EDIT_COMMENT";
+export const DELETE_COMMENT = "DELETE_COMMENT";

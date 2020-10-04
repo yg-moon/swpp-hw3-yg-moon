@@ -1,0 +1,57 @@
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import * as actionCreators from '../store/actions/index';
+
+class LogInPage extends Component{
+    state = {
+        email: '',
+        pw: '',
+    }
+
+    componentDidMount(){
+        this.props.checkLoginStatus();
+    }
+
+    logInHandler = () => {
+        const info =
+            { email: this.state.email, pw: this.state.pw };
+        if(info.email === "swpp@snu.ac.kr" && info.pw === "iluvswpp"){
+            this.props.onLogIn(this.props.selectedUser);
+            this.props.history.push('/articles');
+        }
+        else{
+            alert("Email or password is wrong");
+        }
+    }
+
+    render(){
+        return(
+            <div className = "LogInPage">
+                <label>Email</label>
+                <input id='email-input' type="text" value={this.state.email}
+                onChange={(event) => this.setState({ email: event.target.value })} />
+                <label>Password</label>
+                <input id='pw-input' type="text" value={this.state.pw}
+                onChange={(event) => this.setState({ pw: event.target.value })} />
+                <button id='login-button' onClick={() => this.logInHandler()}>Log In</button>
+            </div>
+        )
+    }
+}
+
+const mapStateToProps = state => {
+    return {
+      selectedUser: state.usr.selectedUser
+    };
+}
+  
+const mapDispatchToProps = dispatch => {
+    return {
+        onLogIn: (usr) =>
+            dispatch(actionCreators.updateLoginStatus(usr)),
+        checkLoginStatus: () =>
+            dispatch(actionCreators.getUser())
+    }
+}
+  
+export default connect(mapStateToProps, mapDispatchToProps)(LogInPage);
