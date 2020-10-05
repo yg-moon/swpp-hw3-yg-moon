@@ -27,12 +27,23 @@ class LogInPage extends Component{
     render(){
         return(
             <div className = "LogInPage">
-                <label>Email</label>
-                <input id='email-input' type="text" value={this.state.email}
-                onChange={(event) => this.setState({ email: event.target.value })} />
-                <label>Password</label>
-                <input id='pw-input' type="text" value={this.state.pw}
-                onChange={(event) => this.setState({ pw: event.target.value })} />
+                <h1>Login Page</h1>
+                <div className = "Email">
+                    <label>Email </label>
+                    <input id='email-input' type="text" value={this.state.email}
+                    onChange={(event) => this.setState({ email: event.target.value })} />
+                </div>
+                <div className = "LineBreak">
+                    <br></br>
+                </div>
+                <div className = "Password">
+                    <label>Password </label>
+                    <input id='pw-input' type="text" value={this.state.pw}
+                    onChange={(event) => this.setState({ pw: event.target.value })} />
+                </div>
+                <div className = "LineBreak">
+                    <br></br>
+                </div>
                 <button id='login-button' onClick={() => this.logInHandler()}>Log In</button>
             </div>
         )

@@ -139,6 +139,8 @@ class ArticleDetailPage extends Component{
                 <div className = "article buttons">
                     {edit_article_button}
                     {delete_article_button}
+                </div>
+                <div className = "back button">
                     <button id = 'back-detail-article-button' onClick={() => this.backDetailArticleHandler()}>Back to Article List</button>
                 </div>
                 <div className="LineBreak">

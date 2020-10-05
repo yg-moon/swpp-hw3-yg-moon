@@ -84,10 +84,10 @@ class ArticleCreatePage extends Component{
                         <button id = 'preview-tab-button' onClick={() => this.previewButtonHandler()}>Preview</button>
                         <button id = 'write-tab-button' onClick={() => this.writeButtonHandler()}>Write</button> 
                     </div>
-                    <label>Title</label>
+                    <label>Title </label>
                     <input id = "article-title-input" type="text" value={this.state.title}
                     onChange={(event) => this.setState({ title: event.target.value })} />
-                    <label>Content</label>
+                    <label>Content </label>
                     <textarea id = "article-content-input" rows="4" type="text" value={this.state.content}
                     onChange={(event) => this.setState({ content: event.target.value })} />
                     <div className='logoutButton'>

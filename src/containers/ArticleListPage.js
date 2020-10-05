@@ -42,12 +42,15 @@ class ArticleListPage extends Component{
         return (
             <div className='ArticleListPage'>
                 <h1>Article List</h1>
-                <div className='articles'>
-                    {articles}
-                </div>
                 <button id='create-article-button' onClick={() => this.createArticleHandler()}>Create Article</button>
                 <div className='logoutButton'>
                     <button id='logout-button' onClick={() => this.logOutHandler()}>Log Out</button>
+                </div>
+                <div className = "LineBreak">
+                    <br></br>
+                </div>
+                <div className='articles'>
+                    {articles}
                 </div>
             </div>
         );
