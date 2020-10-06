@@ -3,12 +3,12 @@ import React from 'react';
 const Article = props => {
     return (
        <div className='Article'>
-            ID: {props.id}
-            <div className="Title" onClick={props.clicked}>
-                Title: {props.title}
-            </div>
+            ID: {props.id} <br></br>
+            <button id="article-title" onClick={props.clicked}>
+                {props.title}
+            </button>
             <div className="Author">
-                Author: {props.author}
+                {props.author}
             </div>
             <div className="LineBreak">
                 <br></br>

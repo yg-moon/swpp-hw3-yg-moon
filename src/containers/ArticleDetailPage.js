@@ -127,15 +127,15 @@ class ArticleDetailPage extends Component{
         return(
             <div className='ArticleDetailPage'>
                 <h1>Article Detail</h1>
-                <h2 id = "article-author">
+                <h3 id = "article-author">
                     Author: {article_author_name}
-                </h2>
-                <h2 id = "article-title">
+                </h3>
+                <h3 id = "article-title">
                     Title: {this.props.selectedArticle.title}
-                </h2>
-                <h2 id = "article-content">
+                </h3>
+                <p id = "article-content">
                     Content: {this.props.selectedArticle.content}
-                </h2>
+                </p>
                 <div className = "article buttons">
                     {edit_article_button}
                     {delete_article_button}

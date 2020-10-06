@@ -122,15 +122,15 @@ class ArticleEditPage extends Component{
                         <button id = 'preview-tab-button' onClick={() => this.previewButtonHandler()}>Preview</button>
                         <button id = 'write-tab-button' onClick={() => this.writeButtonHandler()}>Write</button>  
                     </div>
-                    <h2 id = "article-author">
+                    <h3 id = "article-author">
                         Author: {name}
-                    </h2>
-                    <h2 id = "article-title">
+                    </h3>
+                    <h3 id = "article-title">
                         Title: {this.state.title}
-                    </h2>
-                    <h2 id = "article-content">
+                    </h3>
+                    <p id = "article-content">
                         Content: {this.state.content}
-                    </h2>
+                    </p>
                     <div className='logoutButton'>
                         <button id='logout-button' onClick={() => this.logOutHandler()}>Log Out</button>
                     </div>
