@@ -27,8 +27,7 @@ class ArticleEditPage extends Component{
     confirmEditArticleHandler = (id, aid, title, content) => {
         this.props.history.push('/articles/' + id);
         this.props.onEditArticle(id, aid, title, content);
-        this.props.onGetArticle(id);
-        
+        this.props.onGetArticle(id);   
     }
 
     backEditArticleHandler = () => {

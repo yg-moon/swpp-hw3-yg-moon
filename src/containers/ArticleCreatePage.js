@@ -9,6 +9,10 @@ class ArticleCreatePage extends Component{
         preview_mode: false,
         article_number: 0
     }
+
+    componentDidMount = () => {
+        this.calcArticleNumber();
+    }
     
     logOutHandler = () => {
         this.props.onLogOut(this.props.selectedUser);
@@ -20,7 +24,6 @@ class ArticleCreatePage extends Component{
         this.props.onCreateArticle(atc.id, atc.author_id, atc.title, atc.content);
         this.props.onGetArticle(artnum_plusone);
         this.props.history.push('/articles/' + artnum_plusone);
-        
     }
 
     backCreateArticleHandler = () => {
@@ -56,8 +59,7 @@ class ArticleCreatePage extends Component{
     
     render(){
         // New article info
-        this.calcArticleNumber();
-        const newArticle = {id:this.state.article_number , author_id:this.props.selectedUser.id,
+        const newArticle = {id: this.state.article_number, author_id:this.props.selectedUser.id,
             title:this.state.title , content:this.state.content }
 
         // disable confirm button if content is empty
@@ -68,7 +70,7 @@ class ArticleCreatePage extends Component{
             onClick={() => this.confirmCreateArticleHandler(newArticle)} disabled>Confirm</button>
         }
         else{
-            confirmButton = <button id = 'confirm-create-article-button'
+            confirmButton = <button id = 'confirm-create-article-button' className = "confirm-button"
             onClick={() => this.confirmCreateArticleHandler(newArticle)}>Confirm</button>
         }
         

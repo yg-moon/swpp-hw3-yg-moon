@@ -34,9 +34,12 @@ class ArticleListPage extends Component{
                 if(usr.id === article_author_id){
                     article_author_name = usr.name;
                 }
+                else{
+                    ;                   
+                }
             })
             return ( <Article id={atc.id} title={atc.title}
-                        author={article_author_name} clicked={() => this.clickTitleHandler(atc)}/> );
+                        author={article_author_name} clicked={() => this.clickTitleHandler(atc)} key={atc.id}/> );
         });
 
         return (

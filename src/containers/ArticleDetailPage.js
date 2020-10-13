@@ -100,7 +100,7 @@ class ArticleDetailPage extends Component{
                     }
                 })
                 return ( <Comment author={comment_author_name} comment={cm.content}
-                    edit_button={edit_comment_button} delete_button={delete_comment_button} /> );
+                    edit_button={edit_comment_button} delete_button={delete_comment_button} key={cm.author_id}/> );
             }
         });
         
@@ -121,6 +121,9 @@ class ArticleDetailPage extends Component{
         this.props.users.map(usr => {
             if(usr.id === article_author_id){
                 article_author_name = usr.name;
+            }
+            else{
+                ;
             }
         })
 
