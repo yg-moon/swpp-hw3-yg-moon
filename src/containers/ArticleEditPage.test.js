@@ -130,7 +130,7 @@ const stubInitialState = {
     });
 
     it(`should set state properly on title input`, () => {
-        const title = 'TEST_TITLE'
+        const title = ''
         const component = mount(articleEditPage);
         const wrapper = component.find('#article-title-input');
         wrapper.simulate('change', { target: { value: title } });
@@ -140,7 +140,7 @@ const stubInitialState = {
     });
 
     it(`should set state properly on content input`, () => {
-        const content = 'TEST_CONTENT'
+        const content = ''
         const component = mount(articleEditPage);
         const wrapper = component.find('#article-content-input');
         wrapper.simulate('change', { target: { value: content } });
@@ -150,8 +150,8 @@ const stubInitialState = {
     });
 
     it(`should set state properly on both input`, () => {
-        const title = 'TEST_TITLE'
-        const content = 'TEST_CONTENT'
+        const title = ''
+        const content = ''
         const component = mount(articleEditPage);
         let wrapper = component.find('#article-title-input');
         wrapper.simulate('change', { target: { value: title } });
