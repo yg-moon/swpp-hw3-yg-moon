@@ -23,7 +23,7 @@ const stubInitialState = {
         {id: 2, author_id: 2, title: "TEST_ARTICLE_TITLE_2", content: "TEST_CONTENT_2"},
         {id: 3, author_id: 3, title: "TEST_ARTICLE_TITLE_3", content: "TEST_CONTENT_3"},
     ],
-    selectedArticle: {author_id : -1}
+    selectedArticle: {author_id : 1}
   };
   
   const mockStore = getMockStore(stubInitialState);
@@ -61,8 +61,8 @@ const stubInitialState = {
         wrapper.simulate('click');
         expect(spyUpdateLoginStatus).toHaveBeenCalledTimes(1);
     });
-    
-    it(`should call 'confirmCreateArticleHandler'`, () => {
+
+    it(`should call 'confirmEditArticleHandler'`, () => {
         const spyEditArticle = jest.spyOn(actionCreatorsArticle, 'editArticle')
           .mockImplementation((id, aid, title, content) => { return dispatch => {}; });
         const spyGetArticle = jest.spyOn(actionCreatorsArticle, 'getArticle')
@@ -70,9 +70,12 @@ const stubInitialState = {
         const component = mount(articleEditPage);
 
         let wrapper = component.find('#article-title-input');
-        wrapper.simulate('change', { target: { value: "kaka" } });
+        wrapper.simulate('change', { target: { value: "title1" } });
+        wrapper = component.find('#article-content-input');
+        wrapper.simulate('change', { target: { value: "content1" } });
         const articleCreatePageInstance = component.find(ArticleEditPage.WrappedComponent).instance();
-        expect(articleCreatePageInstance.state.title).toEqual("kaka");
+        expect(articleCreatePageInstance.state.title).toEqual("title1");
+        expect(articleCreatePageInstance.state.content).toEqual("content1")
 
         wrapper = component.find('#confirm-edit-article-button');
         wrapper.simulate('click');
@@ -133,6 +136,7 @@ const stubInitialState = {
         wrapper.simulate('change', { target: { value: title } });
         const articleEditPageInstance = component.find(ArticleEditPage.WrappedComponent).instance();
         expect(articleEditPageInstance.state.title).toEqual(title);
+        expect(articleEditPageInstance.state.content).toEqual(undefined);
     });
 
     it(`should set state properly on content input`, () => {
@@ -141,8 +145,21 @@ const stubInitialState = {
         const wrapper = component.find('#article-content-input');
         wrapper.simulate('change', { target: { value: content } });
         const articleEditPageInstance = component.find(ArticleEditPage.WrappedComponent).instance();
+        expect(articleEditPageInstance.state.title).toEqual(undefined);
+        expect(articleEditPageInstance.state.content).toEqual(content);
+    });
+
+    it(`should set state properly on both input`, () => {
+        const title = 'TEST_TITLE'
+        const content = 'TEST_CONTENT'
+        const component = mount(articleEditPage);
+        let wrapper = component.find('#article-title-input');
+        wrapper.simulate('change', { target: { value: title } });
+        wrapper = component.find('#article-content-input');
+        wrapper.simulate('change', { target: { value: content } });
+        const articleEditPageInstance = component.find(ArticleEditPage.WrappedComponent).instance();
+        expect(articleEditPageInstance.state.title).toEqual(title);
         expect(articleEditPageInstance.state.content).toEqual(content);
     });
     
-
   });

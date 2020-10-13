@@ -109,6 +109,9 @@ class ArticleEditPage extends Component{
                 if(usr.id === article_author_id){
                     name = usr.name;
                 }
+                else{
+                    ;
+                }
             })
             return (
                 <div className='Preview'>

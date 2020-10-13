@@ -18,7 +18,7 @@ describe('Comment Reducer', () => {
           content: stubArticle.content,
           author_id: stubArticle.author_id,
         });
-        ~
+        
         expect(newState).toEqual({
           comments: [{...stubArticle, article_id : undefined}],
           selectedComment:  {id : -1}

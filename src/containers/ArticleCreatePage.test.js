@@ -71,14 +71,17 @@ const stubInitialState = {
         const component = mount(articleCreatePage);
 
         let wrapper = component.find('#article-title-input');
-        wrapper.simulate('change', { target: { value: "kaka" } });
+        wrapper.simulate('change', { target: { value: "title1" } });
+        wrapper = component.find('#article-content-input');
+        wrapper.simulate('change', { target: { value: "content1" } });
         const articleCreatePageInstance = component.find(ArticleCreatePage.WrappedComponent).instance();
-        expect(articleCreatePageInstance.state.title).toEqual("kaka");
+        expect(articleCreatePageInstance.state.title).toEqual("title1");
+        expect(articleCreatePageInstance.state.content).toEqual("content1");
 
         wrapper = component.find('#confirm-create-article-button');
         wrapper.simulate('click');
-        expect(spyCreateArticle).toHaveBeenCalledTimes(0);
-        expect(spyGetArticle).toHaveBeenCalledTimes(0);
+        expect(spyCreateArticle).toHaveBeenCalledTimes(1);
+        expect(spyGetArticle).toHaveBeenCalledTimes(1);
     });
 
     it(`should call 'backCreateArticleHandler'`, () => {

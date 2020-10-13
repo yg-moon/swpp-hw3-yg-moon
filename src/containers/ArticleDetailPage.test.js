@@ -78,14 +78,16 @@ const stubInitialState = {
         expect(spyDeleteArticle).toHaveBeenCalledTimes(1);
     });
 
-    // it(`should call 'confirmCreateCommentHandler'`, () => {
-    //     const spyCreateComment = jest.spyOn(actionCreatorsComment, 'createComment')
-    //     .mockImplementation((authid, atcid, content) => { return dispatch => {}; });
-    //     const component = mount(articleDetailPage);
-    //     const wrapper = component.find('#confirm-create-comment-button');
-    //     wrapper.simulate('click');
-    //     expect(spyCreateComment).toHaveBeenCalledTimes(1);
-    // });
+    it(`should call 'confirmCreateCommentHandler'`, () => {
+        const spyCreateComment = jest.spyOn(actionCreatorsComment, 'createComment')
+        .mockImplementation((authid, atcid, content) => { return dispatch => {}; });
+        const component = mount(articleDetailPage);
+        let wrapper = component.find('#new-comment-content-input');
+        wrapper.simulate('change', { target: { value: "test_comment_content1" } });
+        wrapper = component.find('#confirm-create-comment-button');
+        wrapper.simulate('click');
+        expect(spyCreateComment).toHaveBeenCalledTimes(1);
+    });
 
     // it(`should call 'editCommentHandler'`, () => {
     //     const spyGetComment = jest.spyOn(actionCreatorsComment, 'getComment')

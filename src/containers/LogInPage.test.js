@@ -57,33 +57,19 @@ const stubInitialState = {
         expect(spyUpdateLoginStatus).toHaveBeenCalledTimes(0);
     });
 
-    it(`should set state properly on email input`, () => {
+    it(`should set state properly on input`, () => {
       const spyUpdateLoginStatus = jest.spyOn(actionCreatorsUser, 'updateLoginStatus')
         .mockImplementation((usr) => { return dispatch => {}; });
       const email = "swpp@snu.ac.kr"
+      const pw = "iluvswpp"
       const component = mount(logInPage);
       let wrapper = component.find('#email-input');
       wrapper.simulate('change', { target: { value: email } });
-      wrapper = component.find('.LogInPage');
-      expect(wrapper.length).toBe(1);
-      wrapper = component.find('#login-button');
-      wrapper.simulate('click');
-      expect(spyUpdateLoginStatus).toHaveBeenCalledTimes(0);
-    });
-
-    it(`should set state properly on password input`, () => {
-      const spyUpdateLoginStatus = jest.spyOn(actionCreatorsUser, 'updateLoginStatus')
-        .mockImplementation((usr) => { return dispatch => {}; });
-      const pw = "iluvswpp"
-      const component = mount(logInPage);
-      let wrapper = component.find('#pw-input');
+      wrapper = component.find('#pw-input');
       wrapper.simulate('change', { target: { value: pw } });
-      wrapper = component.find('.LogInPage');
-      expect(wrapper.length).toBe(1);
       wrapper = component.find('#login-button');
       wrapper.simulate('click');
-      expect(spyUpdateLoginStatus).toHaveBeenCalledTimes(0);
+      expect(spyUpdateLoginStatus).toHaveBeenCalledTimes(1);
     });
-    
 
   });
