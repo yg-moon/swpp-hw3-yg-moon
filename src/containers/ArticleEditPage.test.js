@@ -81,6 +81,13 @@ const stubInitialState = {
         wrapper.simulate('click');
         expect(spyEditArticle).toHaveBeenCalledTimes(1);
         expect(spyGetArticle).toHaveBeenCalledTimes(1);
+
+        wrapper = component.find('#article-content-input');
+        wrapper.simulate('change', { target: { value: "" } });
+        wrapper = component.find('#confirm-edit-article-button');
+        wrapper.simulate('click');
+        expect(spyEditArticle).toHaveBeenCalledTimes(1);
+        expect(spyGetArticle).toHaveBeenCalledTimes(1);
     });
 
     it(`should call 'backEditArticleHandler'`, () => {

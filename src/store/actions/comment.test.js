@@ -58,57 +58,57 @@ describe('ActionCreators', () => {
     });
   });
 
-//   it(`'createComment' should post correctly`, (done) => {
-//     const spy = jest.spyOn(axios, 'post')
-//       .mockImplementation((url, td) => {
-//         return new Promise((resolve, reject) => {
-//           const result = {
-//             status: 200,
-//             data: stubComment
-//           };
-//           resolve(result);
-//         });
-//       })
+  it(`'createComment' should post correctly`, (done) => {
+    const spy = jest.spyOn(axios, 'post')
+      .mockImplementation((url, td) => {
+        return new Promise((resolve, reject) => {
+          const result = {
+            status: 200,
+            data: stubComment
+          };
+          resolve(result);
+        });
+      })
 
-//     store.dispatch(actionCreators.createComment()).then(() => {
-//       expect(spy).toHaveBeenCalledTimes(1);
-//       done();
-//     });
-//   });
+    store.dispatch(actionCreators.createComment(stubComment)).then(() => {
+      expect(spy).toHaveBeenCalledTimes(1);
+      done();
+    });
+  });
 
-//   it(`'deleteComment' should delete correctly`, (done) => {
-//     const spy = jest.spyOn(axios, 'delete')
-//       .mockImplementation(url => {
-//         return new Promise((resolve, reject) => {
-//           const result = {
-//             status: 200,
-//             data: null,
-//           };
-//           resolve(result);
-//         });
-//       })
+  it(`'deleteComment' should delete correctly`, (done) => {
+    const spy = jest.spyOn(axios, 'delete')
+      .mockImplementation(url => {
+        return new Promise((resolve, reject) => {
+          const result = {
+            status: 200,
+            data: stubComment,
+          };
+          resolve(result);
+        });
+      })
 
-//     store.dispatch(actionCreators.deleteComment()).then(() => {
-//       expect(spy).toHaveBeenCalledTimes(1);
-//       done();
-//     });
-//   });
+    store.dispatch(actionCreators.deleteComment(stubComment)).then(() => {
+      expect(spy).toHaveBeenCalledTimes(1);
+      done();
+    });
+  });
 
-//   it(`'editComment' should edit correctly`, (done) => {
-//     const spy = jest.spyOn(axios, 'put')
-//       .mockImplementation(url => {
-//         return new Promise((resolve, reject) => {
-//           const result = {
-//             status: 200,
-//             data: null,
-//           };
-//           resolve(result);
-//         });
-//       })
+  it(`'editComment' should edit correctly`, (done) => {
+    const spy = jest.spyOn(axios, 'put')
+      .mockImplementation(url => {
+        return new Promise((resolve, reject) => {
+          const result = {
+            status: 200,
+            data: stubComment,
+          };
+          resolve(result);
+        });
+      })
 
-//     store.dispatch(actionCreators.editComment()).then(() => {
-//       expect(spy).toHaveBeenCalledTimes(1);
-//       done();
-//     });
-//   });
+    store.dispatch(actionCreators.editComment(stubComment)).then(() => {
+      expect(spy).toHaveBeenCalledTimes(1);
+      done();
+    });
+  });
 });

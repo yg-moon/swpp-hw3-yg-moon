@@ -58,21 +58,21 @@ describe('ActionCreatorsUser', () => {
   });
 
 
-//   it(`'updateLoginStatus' should update todo correctly`, (done) => {
-//     const spy = jest.spyOn(axios, 'put')
-//       .mockImplementation(url => {
-//         return new Promise((resolve, reject) => {
-//           const result = {
-//             status: 200,
-//             data: null,
-//           };
-//           resolve(result);
-//         });
-//       })
+  it(`'updateLoginStatus' should update todo correctly`, (done) => {
+    const spy = jest.spyOn(axios, 'put')
+      .mockImplementation(url => {
+        return new Promise((resolve, reject) => {
+          const result = {
+            status: 200,
+            data: stubUser,
+          };
+          resolve(result);
+        });
+      })
 
-//     store.dispatch(actionCreators.updateLoginStatus()).then(() => {
-//       expect(spy).toHaveBeenCalledTimes(1);
-//       done();
-//     });
-//   });
+    store.dispatch(actionCreators.updateLoginStatus(stubUser)).then(() => {
+      expect(spy).toHaveBeenCalledTimes(1);
+      done();
+    });
+  });
 });

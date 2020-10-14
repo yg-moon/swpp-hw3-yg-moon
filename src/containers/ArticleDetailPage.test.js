@@ -14,16 +14,19 @@ import * as actionCreatorsComment from '../store/actions/comment';
 const stubInitialState = {
     users: [
         {id: 1, email: "TEST_EMAIL_1", password: "TEST_PASSWORD_1", name: "TEST_USER1", logged_in: false},
+        {id: 2, email: "TEST_EMAIL_2", password: "TEST_PASSWORD_2", name: "TEST_USER2", logged_in: false},
     ],
     selectedUser: {id:1, logged_in: true},
   
     articles: [
         {id: 1, author_id: 1, title: "TEST_ARTICLE_TITLE_1", content: "TEST_CONTENT_1"},
+        {id: 2, author_id: 2, title: "TEST_ARTICLE_TITLE_2", content: "TEST_CONTENT_2"},
     ],
-    selectedArticle: {author_id : 1},
+    selectedArticle: {id: 1, author_id : 1},
 
     comments: [
         {id: 1, author_id: 1, article_id: 1, content: "TEST_COMMENT_CONTENT1"},
+        {id: 2, author_id: 2, article_id: 2, content: "TEST_COMMENT_CONTENT2"},
     ],
     selectedComment: {id : 1, author_id: 1},
   };
@@ -89,23 +92,23 @@ const stubInitialState = {
         expect(spyCreateComment).toHaveBeenCalledTimes(1);
     });
 
-    // it(`should call 'editCommentHandler'`, () => {
-    //     const spyGetComment = jest.spyOn(actionCreatorsComment, 'getComment')
-    //     .mockImplementation((id) => { return dispatch => {}; });
-    //     const component = mount(articleDetailPage);
-    //     const wrapper = component.find('#edit-comment-button');
-    //     wrapper.simulate('click');
-    //     expect(spyGetComment).toHaveBeenCalledTimes(1);
-    // });
+    it(`should call 'editCommentHandler'`, () => {
+        const spyGetComment = jest.spyOn(actionCreatorsComment, 'getComment')
+        .mockImplementation((id) => { return dispatch => {}; });
+        const component = mount(articleDetailPage);
+        const wrapper = component.find('#edit-comment-button');
+        wrapper.simulate('click');
+        expect(spyGetComment).toHaveBeenCalledTimes(1);
+    });
 
-    // it(`should call 'deleteCommentHandler'`, () => {
-    //     const spyDeleteComment = jest.spyOn(actionCreatorsComment, 'deleteComment')
-    //     .mockImplementation((id) => { return dispatch => {}; });
-    //     const component = mount(articleDetailPage);
-    //     const wrapper = component.find('#delete-comment-button');
-    //     wrapper.simulate('click');
-    //     expect(spyDeleteComment).toHaveBeenCalledTimes(1);
-    // });
+    it(`should call 'deleteCommentHandler'`, () => {
+        const spyDeleteComment = jest.spyOn(actionCreatorsComment, 'deleteComment')
+        .mockImplementation((id) => { return dispatch => {}; });
+        const component = mount(articleDetailPage);
+        const wrapper = component.find('#delete-comment-button');
+        wrapper.simulate('click');
+        expect(spyDeleteComment).toHaveBeenCalledTimes(1);
+    });
 
     it(`should call 'editArticleHandler'`, () => {
         const component = mount(articleDetailPage);

@@ -98,6 +98,9 @@ class ArticleDetailPage extends Component{
                     if(usr.id === article_author_id){
                         comment_author_name = usr.name;
                     }
+                    else{
+                        ;
+                    }
                 })
                 return ( <Comment author={comment_author_name} comment={cm.content}
                     edit_button={edit_comment_button} delete_button={delete_comment_button} key={cm.author_id}/> );
@@ -109,10 +112,16 @@ class ArticleDetailPage extends Component{
         if(this.props.selectedUser.id === this.props.selectedArticle.author_id){
             is_article_author = true;
         }
+        else{
+            ;
+        }
         let edit_article_button, delete_article_button;
         if(is_article_author){ 
             edit_article_button = <button id = 'edit-article-button' onClick={() => this.editArticleHandler()}>Edit Article</button>
             delete_article_button =  <button id = 'delete-article-button' onClick={() => this.deleteArticleHandler()}>Delete Article</button>
+        }
+        else{
+            ;
         }
 
         // Find author name for article
