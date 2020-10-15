@@ -11,6 +11,14 @@ const stubUser = {
     logged_in: false,
 };
 
+const stubUser2 = {
+    id: 2,
+    email: "TEST_EMAIL_2",
+    password: "TEST_PASSWORD_2",
+    name: "TEST_USER2",
+    logged_in: false,
+};
+
 describe('User Reducer', () => {
   it('should return default state', () => {
     const newState = reducer(undefined, {}); // initialize
@@ -64,6 +72,27 @@ describe('User Reducer', () => {
     expect(newState).toEqual({
       users: [],
       selectedUser: {logged_in: true}
+    });
+  });
+
+  it('should get update login status2', () => {
+    const stubSelectedUser = {id: 1,
+        email: "TEST_SELECTED_EMAIL_1",
+        password: "TEST_SELECTED_PASSWORD_1",
+        name: "TEST_SELECTED_USER1",
+        logged_in: false,
+    };
+    const initialState = {
+    users: [stubUser, stubUser2],
+    selectedUser: stubSelectedUser,
+    };
+    const newState = reducer(initialState, {
+      type: actionTypes.UPDATE_LOGIN_STATUS,
+      targetID: 1,
+    });
+    expect(newState).toEqual({
+      users: [{...stubUser, logged_in: true}, stubUser2],
+      selectedUser: stubSelectedUser,
     });
   });
 

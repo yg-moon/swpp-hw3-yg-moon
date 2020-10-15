@@ -2,8 +2,8 @@ import React from 'react';
 import reducer from './comment';
 import * as actionTypes from '../actions/actionTypes';
 
-const stubArticle = {id: 1, author_id: 1, article_id: 1, content: "TEST_COMMENT_CONTENT1"};
-// actually, stubComment.
+const stubComment = {id: 1, author_id: 1, article_id: 1, content: "TEST_COMMENT_CONTENT1"};
+const stubComment2 = {id: 2, author_id: 2, article_id: 2, content: "TEST_COMMENT_CONTENT2"};
 
 describe('Comment Reducer', () => {
     it('should return default state', () => {
@@ -14,46 +14,61 @@ describe('Comment Reducer', () => {
       it('should create comment', () => {
         const newState = reducer(undefined, {
           type: actionTypes.CREATE_COMMENT,
-          id: stubArticle.id,
-          content: stubArticle.content,
-          author_id: stubArticle.author_id,
+          id: stubComment.id,
+          content: stubComment.content,
+          author_id: stubComment.author_id,
         });
         
         expect(newState).toEqual({
-          comments: [{...stubArticle, article_id : undefined}],
+          comments: [{...stubComment, article_id : undefined}],
           selectedComment:  {id : -1}
         });
       });
     
-    //   it('should delete comment', () => {
-    //     const stubInitialState = {
-    //       articles: [stubArticle],
-    //       selectedArticle: null,
-    //     };
-    //     const newState = reducer(stubInitialState, {
-    //       type: actionTypes.DELETE_COMMENT,
-    //       targetID: 1,
-    //     });
-    //     expect(newState).toEqual({
-    //       comments: [],
-    //       selectedComment: null
-    //     });
-    //   });
+      it('should delete comment', () => {
+        const stubInitialState = {
+          comments: [stubComment],
+          selectedComment: null,
+        };
+        const newState = reducer(stubInitialState, {
+          type: actionTypes.DELETE_COMMENT,
+          targetID: 1,
+        });
+        expect(newState).toEqual({
+          comments: [],
+          selectedComment: null
+        });
+      });
     
-    //   it('should edit article', () => {
-    //     const stubInitialState = {
-    //       articles: [stubArticle],
-    //       selectedArticle: null,
-    //     };
-    //     let newState = reducer(stubInitialState, {
-    //       type: actionTypes.EDIT_ARTICLE,
-    //       targetID: 1,
-    //     });
-    //     expect(newState).toEqual({
-    //       articles: [{...stubArticle, title:stubArticle.article.title, content: stubArticle.article.content}],
-    //       selectedArticle: null}
-    //     );
-    //   });
+      it('should edit comment', () => {
+        const stubInitialState = {
+          comments: [stubComment],
+          selectedComment: null,
+        };
+        let newState = reducer(stubInitialState, {
+          type: actionTypes.EDIT_COMMENT,
+          comment: stubComment
+        });
+        expect(newState).toEqual({
+          comments: [{...stubComment, content: stubComment.content}],
+          selectedComment: null}
+        );
+      });
+
+      it('should edit comment2', () => {
+        const stubInitialState = {
+          comments: [stubComment2],
+          selectedComment: null,
+        };
+        let newState = reducer(stubInitialState, {
+          type: actionTypes.EDIT_COMMENT,
+          comment: stubComment
+        });
+        expect(newState).toEqual({
+          comments: [stubComment2],
+          selectedComment: null}
+        );
+      });
     
       it('should get comment', () => {
         const stubSelectedArticle = {id: 1, author_id: 1, article_id: 1, content: "TEST_COMMENT_CONTENT1"};

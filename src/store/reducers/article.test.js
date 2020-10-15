@@ -3,8 +3,7 @@ import reducer from './article';
 import * as actionTypes from '../actions/actionTypes';
 
 const stubArticle =  {id: 1, author_id: 1, title: "TEST_ARTICLE_TITLE_1", content: "TEST_CONTENT_1"};
-
-
+const stubArticle2 =  {id: 2, author_id: 2, title: "TEST_ARTICLE_TITLE_2", content: "TEST_CONTENT_2"};
 
 describe('Article Reducer', () => {
   it('should return default state', () => {
@@ -41,20 +40,35 @@ describe('Article Reducer', () => {
     });
   });
 
-//   it('should edit article', () => {
-//     const stubInitialState = {
-//       articles: [stubArticle],
-//       selectedArticle: null,
-//     };
-//     let newState = reducer(stubInitialState, {
-//       type: actionTypes.EDIT_ARTICLE,
-//       targetID: 1,
-//     });
-//     expect(newState).toEqual({
-//       articles: [{...stubArticle, title:stubArticle.article.title, content: stubArticle.article.content}],
-//       selectedArticle: null}
-//     );
-//   });
+  it('should edit article', () => {
+    const stubInitialState = {
+      articles: [stubArticle],
+      selectedArticle: null,
+    };
+    let newState = reducer(stubInitialState, {
+      type: actionTypes.EDIT_ARTICLE,
+      article: stubArticle,
+    });
+    expect(newState).toEqual({
+      articles: [{...stubArticle, title:stubArticle.title, content: stubArticle.content}],
+      selectedArticle: null}
+    );
+  });
+
+  it('should edit article2', () => {
+    const stubInitialState = {
+      articles: [stubArticle2],
+      selectedArticle: null,
+    };
+    let newState = reducer(stubInitialState, {
+      type: actionTypes.EDIT_ARTICLE,
+      article: stubArticle,
+    });
+    expect(newState).toEqual({
+      articles: [stubArticle2],
+      selectedArticle: null}
+    );
+  });
 
   it('should get article', () => {
     const stubSelectedArticle = {id: 1, author_id: 1, title: "TEST_ARTICLE_TITLE_1", content: "TEST_CONTENT_1"};
